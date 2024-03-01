@@ -5,6 +5,7 @@ import auth from "../components/firebase"
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../components/firebase';
+import { toast } from 'react-toastify';
 
 const Signup = () => {
 
@@ -16,13 +17,16 @@ const Signup = () => {
   const conf_pass = useRef(null);
   const [showPassword, setShowPassword] = useState(false) // for eye toggle and input type change
 
+  // Toast
+  const Pass_ConfirmPass_Toast = () => toast.warning(`Password and Confirm Password doesn't matched`, { position: "top-center", autoClose: 3000 });
+
   const onSubmit = (e) => {
     e.preventDefault();
 
     if (name.current.value !== '' || email.current.value !== '' || pass.current.value !== '' || conf_pass.current.value !== '') {
 
       if (pass.current.value !== conf_pass.current.value) {
-        alert("Confrim Password does not matched with Password")
+        Pass_ConfirmPass_Toast();
       }
       else {
 
