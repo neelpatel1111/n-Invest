@@ -8,7 +8,7 @@ const Home = () => {
   const [newsLoading, setNewsLoading] = useState(true);
 
   useEffect(() => {
-    const API_KEY = `4d985e46fa184cf7b228cced11bc954d`;
+    const API_KEY = process.env.NEWS_API_KEY;
     const url = `https://newsapi.org/v2/everything?q=BSE&sortBy=publishedAt&apiKey=${API_KEY}`
 
     const fetchNewsData = async () => {

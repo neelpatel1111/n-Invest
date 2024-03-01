@@ -8,7 +8,7 @@ const News = () => {
   const [newsData, setNewsData] = useState([]);
 
   useEffect(() => {
-    const API_KEY = `4d985e46fa184cf7b228cced11bc954d`;
+    const API_KEY = process.env.NEWS_API_KEY;
     const url = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=${API_KEY}`
 
     const fetchData = async () => {
